@@ -7,8 +7,5 @@ class SimpleClassExample {
     Date aDate
 
     static constraints = {
-//        aString nullable: false
-//        aNumber nullable: false
-//        aDate nullable: false
     }
 }

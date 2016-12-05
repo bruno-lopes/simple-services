@@ -20,22 +20,16 @@ class SimpleCrudService<GrailsDomainClass> implements AbstractCrudSerice<GrailsD
     }
 
     def saveValidation = { GrailsDomainClass instance ->
-//        ArrayList<ValidationException> exceptions = new ArrayList<ValidationException>()
         ValidationErrors exceptions = null
-        println "Instancia:${instance.properties}"
         if (!instance.validate()) {
-            println "Instancia nao valida"
             exceptions = new ValidationErrors(instance)
-            //exceptions.add(new ValidationExcenption("aff", instance.errors))
             exceptions.addAllErrors(instance.errors)
-
         }
         return exceptions
     }
 
     @Override
     GrailsDomainClass save(GrailsDomainClass domainInstance) throws ValidationException {
-
         ArrayList<ValidationException> methodValidationExceptions = performValidations(domainInstance, "save")
         if (!(domainInstance.validate()) || !(methodValidationExceptions.empty)) {
             throw new ValidationException(
@@ -67,7 +61,6 @@ class SimpleCrudService<GrailsDomainClass> implements AbstractCrudSerice<GrailsD
         MetaMethod metaMethod = findMethod(methodName)
         ArrayList<Closure> methodValidations = findMethodValidations(metaMethod)
         ArrayList<ValidationErrors> exceptions = new ArrayList<ValidationErrors>()
-        println "Validationgs: ${instance.validate()}"
         methodValidations.each { validation ->
 
             def validationExceptions = validation(instance)

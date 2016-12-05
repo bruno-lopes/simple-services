@@ -25,7 +25,6 @@ class SimpleClassExampleServiceSpec extends Specification {
         when: "Saves the instance"
         service.save(simpleClassExampleInstance)
 
-
         then: "A validation exception is thrown"
         ValidationException e = thrown(ValidationException)
 
