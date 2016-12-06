@@ -34,7 +34,7 @@ class SimpleClassExampleServiceSpec extends Specification {
 
     void "Save a instance with all required data (valid) persists the instance"() {
         given: "A new instance with valid data"
-        SimpleClassExample teste = new SimpleClassExample(aString: "Test", aNumber: 1, aDate: new Date())
+        SimpleClassExample teste = new SimpleClassExample(someString: "Test", someNumber: 1, someDate: new Date())
 
         when: "Saves the instance"
         SimpleClassExample savedTeste = service.save(teste)
@@ -43,7 +43,7 @@ class SimpleClassExampleServiceSpec extends Specification {
         savedTeste != null
 
         and: "Has the same data then the original instance"
-        savedTeste.aString == teste.aString
-        savedTeste.aNumber == teste.aNumber
+        savedTeste.someString == teste.someString
+        savedTeste.someNumber == teste.someNumber
     }
 }

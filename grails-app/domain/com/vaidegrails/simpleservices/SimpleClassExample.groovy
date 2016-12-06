@@ -2,9 +2,9 @@ package com.vaidegrails.simpleservices
 
 class SimpleClassExample {
 
-    String aString
-    Integer aNumber
-    Date aDate
+    String someString
+    Integer someNumber
+    Date someDate
 
     static constraints = {
     }

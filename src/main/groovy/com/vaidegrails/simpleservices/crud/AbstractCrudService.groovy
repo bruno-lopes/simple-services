@@ -2,7 +2,9 @@ package com.vaidegrails.simpleservices.crud
 
 import grails.validation.ValidationException
 
-interface AbstractCrudSerice<GrailsDomainClass> {
+import java.lang.reflect.Method
+
+interface AbstractCrudService<GrailsDomainClass> {
 
     /**
      * Saves an instance from the domain class in the datasource specified by the project
@@ -47,4 +49,10 @@ interface AbstractCrudSerice<GrailsDomainClass> {
      * @return The metamethod
      */
     MetaMethod findMethod(final String methodName)
+
+    /**
+     * Initialize the array with the associated validations to each method
+     * @return A hashmap containing the methods and their respective validations
+     */
+    HashMap<Method, ArrayList<Closure>> initializeValidations()
 }
